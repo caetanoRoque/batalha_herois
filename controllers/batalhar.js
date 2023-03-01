@@ -9,8 +9,20 @@ exports.post = (req,res)=>{
     let heroi_encontrado=heroi.find(i => i.id == h)
     let vilao_encontrado=vilao.find(i => i.id == v)
 
-
-    if(heroi_encontrado.pontosDePoder>vilao_encontrado.pontosDePoder){
+    if(heroi_encontrado.imortal &&vilao_encontrado.imortal){
+        if(heroi_encontrado.pontosDePoder>vilao_encontrado.pontosDePoder){
+            var b = {"batalha":`${heroi_encontrado.nome} venceu ${vilao_encontrado.nome}.`}
+        }else if(heroi_encontrado.pontosDePoder==vilao_encontrado.pontosDePoder){
+            var b = {"batalha":`${heroi_encontrado.nome} empatou com ${vilao_encontrado.nome}.`}
+        }else{
+            var b = {"batalha":`${vilao_encontrado.nome} venceu ${heroi_encontrado.nome}.`}
+        }
+    }else if(heroi_encontrado.imortal){
+        var b = {"batalha":`${heroi_encontrado.nome} venceu ${vilao_encontrado.nome}.`}
+    }else if(vilao_encontrado.imortal){
+        var b = {"batalha":`${vilao_encontrado.nome} venceu ${heroi_encontrado.nome}.`}
+    }
+    else if(heroi_encontrado.pontosDePoder>vilao_encontrado.pontosDePoder){
         var b = {"batalha":`${heroi_encontrado.nome} venceu ${vilao_encontrado.nome}.`}
     }else if(heroi_encontrado.pontosDePoder==vilao_encontrado.pontosDePoder){
         var b = {"batalha":`${heroi_encontrado.nome} empatou com ${vilao_encontrado.nome}.`}
