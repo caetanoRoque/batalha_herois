@@ -19,7 +19,11 @@ exports.fundir = async (req, res) => {
     const media = (vilao1["pontosDePoder"] + vilao2["pontosDePoder"])/ 2
     const new_name = await fundir_nome(vilao1["nome"], vilao2["nome"])
 
-    vilao.push({"id": id, "nome": new_name, "pontosDePoder": media, "imortal": false})
+    if (vilao1["imortal"] || vilao2["imortal"]){
+        vilao.push({"id": id, "nome": new_name, "pontosDePoder": media, "imortal": true})
+    } else {
+        vilao.push({"id": id, "nome": new_name, "pontosDePoder": media, "imortal": false})
+    }
     res.status(201).send(`Um novo vilão chamado "${new_name}" foi criado! Ele possui ${media} pontos de poder!`)
 }
 
