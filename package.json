@@ -2,9 +2,10 @@
   "name": "batalha",
   "version": "1.0.0",
   "description": "batalhas",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "author": "caetano roque",
   "license": "MIT",
@@ -12,5 +13,8 @@
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "xhr2": "^0.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
